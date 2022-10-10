@@ -1,10 +1,25 @@
 import React, { useState,useReducer } from 'react'
 
+const ACTIONS = {
+  INCREMENT:'increment',
+  DECREMENT:'decrement'
+}
+
 function reducer(state,action)
 {
-return{
-  count:state.count+1
-}
+  if(action.type==ACTIONS.INCREMENT)
+  {
+    return{
+      count:state.count+1
+    }
+  }
+  else
+  {
+    return{
+      count:state.count-1
+    }
+  }
+
 }
 
 const App = () => {
@@ -15,11 +30,12 @@ const App = () => {
 
   const decrementCount = () =>{
     // setCount(prevCount => prevCount-1)
+    dispatch({type:ACTIONS.DECREMENT})
   }
 
   const incrementCount = ()=>{
     // setCount(count+1)
-    dispatch()
+    dispatch({type:ACTIONS.INCREMENT})
   }
   return (
     <div>
